@@ -28,13 +28,12 @@ require 'capistrano/supervisor'
 ```
 
 The task will run after `deploy:published` as part of Capistrano's default deploy,
-or can be run in isolation with `cap production supervisord:restart`
+or can be run in isolation with `cap production supervisord:reload`
 
 ### Configurable options:
 
 ```ruby
-set :supervisord_restart_roles, :app
-set :supervisord_restart_processes, []
+set :supervisord_reload_roles, :app
 ```
 
 ## Development

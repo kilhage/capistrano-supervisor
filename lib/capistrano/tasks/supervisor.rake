@@ -1,19 +1,16 @@
 namespace :supervisord do
-  desc 'Restarts supervisord processes'
-  task :restart do
-    on roles fetch(:supervisord_restart_roles) do
-      fetch(:supervisord_restart_processes).each do |program|
-        execute "supervisorctl restart #{program}"
-      end
+  desc 'Reloads supervisord'
+  task :reload do
+    on roles fetch(:supervisord_reload_roles) do
+      execute "supervisorctl reload"
     end
   end
 
-  after 'deploy:published', 'supervisord:restart'
+  after 'deploy:published', 'supervisord:reload'
 end
 
 namespace :load do
   task :defaults do
-    set :supervisord_restart_roles, :app
-    set :supervisord_restart_processes, []
+    set :supervisord_reload_roles,      :app
   end
 end
