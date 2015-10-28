@@ -2,6 +2,8 @@
 
 supervisord support for Capistrano 3.x
 
+Makes it possible to reload/restart supervisord during deploy
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -27,13 +29,20 @@ Require in Capfile to use the default task:
 require 'capistrano/supervisor'
 ```
 
-The task will run after `deploy:published` as part of Capistrano's default deploy,
-or can be run in isolation with `cap production supervisord:reload`
-
-### Configurable options:
+Configure in deploy.rb to execute one of the tasks:
 
 ```ruby
-set :supervisord_reload_roles, :app
+after 'deploy:published', 'supervisord:reload'
+after 'deploy:published', 'supervisord:restart'
+```
+
+You can also run it in isolation: `cap production supervisord:reload` or `cap production supervisord:restart`
+
+Configurable options:
+
+```ruby
+set :supervisord_reload_roles,  :app
+set :supervisord_restart_roles, :app
 ```
 
 ## Development

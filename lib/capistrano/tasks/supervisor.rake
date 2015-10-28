@@ -5,12 +5,17 @@ namespace :supervisord do
       execute "supervisorctl reload"
     end
   end
-
-  after 'deploy:published', 'supervisord:reload'
+  desc 'Restarts supervisord'
+  task :restart do
+    on roles fetch(:supervisord_restart_roles) do
+      execute "supervisorctl restart"
+    end
+  end
 end
 
 namespace :load do
   task :defaults do
     set :supervisord_reload_roles,      :app
+    set :supervisord_restart_roles,     :app
   end
 end
