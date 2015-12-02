@@ -1,5 +1,7 @@
 # Capistrano::Supervisor
 
+[![Gem Version](https://badge.fury.io/rb/capistrano-supervisor.svg)](https://badge.fury.io/rb/capistrano-supervisor)
+
 supervisord support for Capistrano 3.x
 
 Makes it possible to reload/restart supervisord during deploy
