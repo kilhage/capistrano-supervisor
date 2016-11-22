@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{supervisord support for Capistrano 3.x}
   spec.description   = %q{supervisord support for Capistrano 3.x}
-  spec.homepage      = "https://github.com/glooby/capistrano-supervisor"
+  spec.homepage      = "https://www.glooby.se"
   spec.license       = "MIT"
 
   if spec.respond_to?(:metadata)
