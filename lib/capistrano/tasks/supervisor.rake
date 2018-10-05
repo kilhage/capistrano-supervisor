@@ -1,3 +1,5 @@
+require 'rake'
+
 namespace :supervisord do
   desc 'Reloads supervisord'
   task :reload do
